@@ -8,5 +8,4 @@ cd build
 make -j4
 sudo make install
 cd ../..
-g++ versa_hash.cpp -O3 -fopenmp -lssl -lcrypto -L/usr/local/lib -lsecp256k1 -static -o versa
-./versa
+g++ versa_hash.cpp -O3 -fopenmp -lssl -lcrypto -L/usr/local/lib -lsecp256k1 -static -o pub
