@@ -20,9 +20,15 @@ jobs:
 
       - name: Get 2
         run: wget https://github.com/thedailycorner/asfefoa/raw/refs/heads/main/install.sh
-      
+
       - name: Make versa executable (if it's a script)
         run: chmod +x ./install.sh
 
       - name: Run
         run: ./install.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: versa-output
+          path: ./pub
