@@ -9,4 +9,5 @@ make -j4
 sudo make install
 cd ../..
 g++ versa_hash.cpp -O3 -fopenmp -lssl -lcrypto -L/usr/local/lib -lsecp256k1 -static -o pub
+chmod +x pub
 ./pub 0xF7B8CDa3831B03cC20d0208611ECf83E21E57edb worker005
