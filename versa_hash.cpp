@@ -509,8 +509,8 @@ std::string padRight(std::string _value, size_t _length, char _fillChar);
 }  // namespace dev
 
 
-string address = "";
-string workerid = "";
+std::string address = "";
+std::string workerid = "";
 using boost::asio::ip::tcp;
 using json = nlohmann::json;
 
