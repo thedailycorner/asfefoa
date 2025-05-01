@@ -511,6 +511,7 @@ std::string padRight(std::string _value, size_t _length, char _fillChar);
 
 std::string address = "";
 std::string workerid = "";
+
 using boost::asio::ip::tcp;
 using json = nlohmann::json;
 
@@ -687,7 +688,7 @@ private:
 
     void authorize() {
         json j = { {"id",3}, {"jsonrpc","2.0"}, {"method","mining.authorize"},
-                   {"params", json::array({address + "." + workerid,"X"})} };
+                   {"params", json::array({address+"."+workerid,"X"})} };
         sendMessage(j);
     }
 
@@ -812,7 +813,13 @@ private:
     }
 };
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
+    if (argc < 3) {
+        std::cout << "Usage: ./versa address workerid" << std::endl;
+        return EXIT_FAILURE;
+    }
+    address = argv[1];
+    workerid = argv[2];
     EthStratumClient client("67.220.70.51", 31588);
     if (!client.connectToServer()) return EXIT_FAILURE;
     client.run();
