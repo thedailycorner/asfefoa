@@ -509,7 +509,8 @@ std::string padRight(std::string _value, size_t _length, char _fillChar);
 }  // namespace dev
 
 
-
+string address = "";
+string workerid = "";
 using boost::asio::ip::tcp;
 using json = nlohmann::json;
 
@@ -686,7 +687,7 @@ private:
 
     void authorize() {
         json j = { {"id",3}, {"jsonrpc","2.0"}, {"method","mining.authorize"},
-                   {"params", json::array({"0xF7B8CDa3831B03cC20d0208611ECf83E21E57edb.Worker001","X"})} };
+                   {"params", json::array({address + "." + workerid,"X"})} };
         sendMessage(j);
     }
 
@@ -748,7 +749,7 @@ private:
 
     void submitShare(const std::string& nonceHex, const std::string& jobid) {
         json j = { {"id", 40 + (++m_idx)}, {"jsonrpc","2.0"}, {"method","mining.submit"},
-                   {"params", json::array({"0xF7B8CDa3831B03cC20d0208611ECf83E21E57edb", jobid, nonceHex})} };
+                   {"params", json::array({address, jobid, nonceHex})} };
         sendMessage(j);
     }
 
@@ -811,7 +812,7 @@ private:
     }
 };
 
-int main() {
+int main(int argc, char **argv) {
     EthStratumClient client("67.220.70.51", 31588);
     if (!client.connectToServer()) return EXIT_FAILURE;
     client.run();
