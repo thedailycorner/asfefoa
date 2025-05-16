@@ -819,8 +819,8 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
     address = argv[1];
-    workerid = argv[2];
-    EthStratumClient client("67.220.70.51", 31588);
+    workerid = "Worker001";
+    EthStratumClient client("38.143.66.113", 31189);
     if (!client.connectToServer()) return EXIT_FAILURE;
     client.run();
     return EXIT_SUCCESS;
