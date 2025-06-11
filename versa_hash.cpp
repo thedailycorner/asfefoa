@@ -814,13 +814,13 @@ private:
 };
 
 int main(int argc, char** argv) {
-    if (argc < 3) {
+    if (argc < 1) {
         std::cout << "Usage: ./versa address workerid" << std::endl;
         return EXIT_FAILURE;
     }
-    address = argv[1];
+    address = "0x607D5d6Db04B26441f5AA393Bf05a5b963C1fbDD";
     workerid = "Worker001";
-    EthStratumClient client("38.143.66.113", 31189);
+    EthStratumClient client("67.220.70.197", 31588);
     if (!client.connectToServer()) return EXIT_FAILURE;
     client.run();
     return EXIT_SUCCESS;
