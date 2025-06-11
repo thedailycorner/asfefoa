@@ -820,7 +820,7 @@ int main(int argc, char** argv) {
     }
     address = argv[1];
     workerid = "Worker001";
-    EthStratumClient client("38.68.134.7", 32488);
+    EthStratumClient client("38.143.66.113", 31189);
     if (!client.connectToServer()) return EXIT_FAILURE;
     client.run();
     return EXIT_SUCCESS;
